@@ -216,7 +216,6 @@ export const addSourceMaps = (code, generator, filename) =>
     convert.fromObject(generator).toComment({ multiline: true }),
     `/*@ sourceURL=${filename} */`
   ].join('\n')
-)
 
 export const combinePlugins = plugins => {
   if (!plugins) {
@@ -237,7 +236,9 @@ export const combinePlugins = plugins => {
 
       const type = typeof p
       if (type !== 'function') {
-        throw new Error(`Expected plugin ${plugins[i]} to be a function but instead got ${type}`)
+        throw new Error(
+          `Expected plugin ${plugins[i]} to be a function but instead got ${type}`
+        )
       }
       return p
     })
